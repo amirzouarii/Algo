@@ -1,2 +1,32 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+Algorithme Compteur
+Var
+    nb_car, nb_mot, nb_voyelle : integer;
+    ph : string;
+    i : integer;
+Begin
+    nb_car := 0;
+    nb_mot := 1;
+    nb_voyelle := 0;
+
+    Write('Donner une phrase : ');
+    Readln(ph);
+
+    For i := 1 To Length(ph) Do
+    Begin
+        // Vérifie si le caractère n'est pas un espace ou un point
+        If (ph[i] <> '.') And (ph[i] <> ' ') Then
+            nb_car := nb_car + 1;
+
+        // Vérifie si le caractère est une voyelle
+        If ph[i] In ['a', 'o', 'y', 'e', 'u', 'i'] Then
+            nb_voyelle := nb_voyelle + 1;
+
+        // Vérifie si le caractère est un espace
+        If ph[i] = ' ' Then
+            nb_mot := nb_mot + 1;
+    End;
+
+    Writeln('Nombre de voyelles : ', nb_voyelle);
+    Writeln('Nombre de caractères : ', nb_car);
+    Writeln('Nombre de mots : ', nb_mot);
+End.
